@@ -7,10 +7,14 @@ var logger = require('morgan');
 
 //  Connected Mongoose
 
-require("./models/config");
+// require("./models/config");
+require("./models/config")
 const USER=require("./models/userModels");
+
 const passport=require("passport")
 const session=require("express-session")
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 

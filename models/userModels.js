@@ -23,8 +23,9 @@ const userModels= new mongoose.Schema({
     resetPasswordotp:{
         type:String,
         default:-1,
-    }
-})
+    },
+    expanses:[{type:mongoose.Schema.Types.ObjectId,ref:"expanse"}]
+},{timestamps:true})
 
 userModels.plugin(plm);
-module.exports("User",userModels);
+module.exports = mongoose.model("user",userModels);
