@@ -51,6 +51,16 @@ router.post('/send-mail', async function(req, res, next) {
     if(!user) return res.send("User Not Found! <a href='/forget'>Try Again</a>")
     sendmail(user.email,user,req,res)
   } catch (error) {
+    console.log(error)
+    res.send(error)
+  }
+});
+
+// Work on forget password option now
+router.post('/forget/<%= id%>', async function(req, res, next) {
+  try {
+    
+  } catch (error) {
     
   }
 });

@@ -1,4 +1,6 @@
-function sendmailhandler(req, user, res) {
+const nodemailer=require("nodemailer")
+
+exports.sendmail=function sendmailhandler(email, user,req, res) {
     const otp = Math.floor(1000 + Math.random() * 9000);
     const transport = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -13,7 +15,7 @@ function sendmailhandler(req, user, res) {
     // receiver mailing info
     const mailOptions = {
       from: "Devloper_pvt.limited<rohitbanna101@gmail.com>",
-      to: user.email,
+      to: email,
       subject: "Testing Mail Service",
       // text: req.body.message,
       html: `<h1>Your OTP iS ${otp} </h1>`,
@@ -29,3 +31,4 @@ function sendmailhandler(req, user, res) {
   
     });
   }
+
