@@ -1,6 +1,22 @@
 <%- include("./partials/header")%>
 <%- include("./partials/nav")%>
-<link rel="stylesheet" href="stylesheets/style.css">
+<!--  -->
+<h1>👋 <%= admin.username %></h1>
 
-<div class="title"><h1>Money-manager</h1><div class="button"><button><a href="/login">Login</a></button><button><a href="signup">Sign up  </a></button></div>
+<a href="/createexpense">Add New Expense</a>
+<hr />
+<form action="/filter">
+    <select name="key" id="">
+        <option value="amount">Amount</option>
+        <option value="remark">Remark</option>
+        <option value="category">Category</option>
+        <option value="paymentmode">Payment Mode</option>
+        <option value="Date">Date</option>
+    </select>
+    <input type="text" name="value" placeholder="enter search term" />
+    <button>Filter</button>
+</form>
+
+<!--  -->
 <%-include("./partials/footer")%>
+

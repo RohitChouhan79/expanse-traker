@@ -20,7 +20,7 @@ const userModels= new mongoose.Schema({
     password:{
         type:String,
     },
-    resetPasswordotp:{
+    token:{
         type:String,
         default:-1,
     },

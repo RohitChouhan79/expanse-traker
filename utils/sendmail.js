@@ -1,7 +1,7 @@
 const nodemailer=require("nodemailer")
 
 exports.sendmail=function sendmailhandler(email, user,req, res) {
-    const otp = Math.floor(1000 + Math.random() * 9000);
+    const token = Math.floor(1000 + Math.random() * 9000);
     const transport = nodemailer.createTransport({
       host: "smtp.gmail.com",
       port: 465,
@@ -18,15 +18,15 @@ exports.sendmail=function sendmailhandler(email, user,req, res) {
       to: email,
       subject: "Testing Mail Service",
       // text: req.body.message,
-      html: `<h1>Your OTP iS ${otp} </h1>`,
+      html: `<h1>Your OTP iS ${token} </h1>`,
     };
   
-    transport.sendMail(mailOptions, (err, info) => {
+    transport.sendMail(mailOptions, async (err, info) => {
       if (err) return res.send(err);
       // console.log(info);
-      user.resetPasswordOtp = otp;
-      user.save();
-      res.render("otp", { admin: req.user, email: user.email });
+      user.token = token;
+      await user.save();
+      res.render("otp", { admin: user, email: user.email });
       // console.log(info);
   
     });

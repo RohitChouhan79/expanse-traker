@@ -3,9 +3,10 @@
 <link rel="stylesheet" href="otp.css">
 <div class = "container">
   <h4>Enter OTP</h4>
-  <form action = "/forget/<%= id%>">
+  <form action = "/forget/<%= admin._id%>" method="post">
     <div class = "input-field">
-      <input type="number ">
+      <input type="number " name="token" placeholder="Enter Otp here...">
+      <input type="password" name="newpassword" placeholder="new password">
      
       <button>Verify OTP</button>
     </div>

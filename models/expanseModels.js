@@ -9,7 +9,7 @@ const expanseModels= new mongoose.Schema({
         type:String,
         enum:["cash","online","cheque"],
     },
-    user:[{type:mongoose.Schema.Types.ObjectId , ref:"user"}]
+    user:{type:mongoose.Schema.Types.ObjectId , ref:"user"}
 
 },{timestamps:true})
 
