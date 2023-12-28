@@ -17,6 +17,7 @@
     <button>Filter</button>
 </form>
 
+<h1>Sum: <%= expanses.reduce((ac,cv) => ac+cv.amount, 0)%></h1>
 <!--  -->
 <%-include("./partials/footer")%>
 

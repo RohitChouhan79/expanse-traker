@@ -4,7 +4,7 @@ const User=require("../models/userModels")
 const passport=require("passport")  
 const LocalStrategy=require("passport-local")
 passport.use(new LocalStrategy(User.authenticate()))
-const Expanse=require("../models/expanseModels")
+const expanses=require("../models/expanseModels")
 
 const {sendmail}=require("../utils/sendmail")
 
@@ -90,8 +90,8 @@ router.post(
 
 router.get("/profile",isLoggedIn, async function (req, res, next) {
   try {
-    // let { expenses } = await req.user.populate("expenses");
-    res.render("profile", { admin: req.user } );
+    let { expanses } = await req.user.populate("expanses");
+    res.render("profile", { admin: req.user,expanses } );
 } catch (error) {
   console.log('error', error)
     res.send(error, "error");
@@ -136,8 +136,8 @@ router.get("/createexpense", isLoggedIn, function (req, res, next) {
 router.post("/createexpense", isLoggedIn, async function (req, res, next) {
   try {
 
-      const expense = new Expanse(req.body);
-      req.user.expenses.push(expense._id);
+      const expense = new expanses(req.body);
+      req.user.expanses.push(expense._id);
       expense.user = req.user._id;
       await expense.save();
       await req.user.save();

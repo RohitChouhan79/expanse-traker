@@ -27,5 +27,5 @@ const userModels= new mongoose.Schema({
     expanses:[{type:mongoose.Schema.Types.ObjectId,ref:"expanse"}]
 },{timestamps:true})
 
-userModels.plugin(plm);
+userModels.plugin(plm); 
 module.exports = mongoose.model("user",userModels);
